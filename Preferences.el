@@ -20,6 +20,9 @@
 
 (setq vc-handled-backends '(git))
 
+;; fixes buggy ruby indentation in aquamacs 3.0a http://stackoverflow.com/questions/19900180/emacs-24-ruby-mode-indentation-behavior-when-using-iterator-such-as-each
+(setq ruby-use-smie nil)
+
 ;; better buffer switching
 (require 'flx-ido)
 (require 'tramp)
