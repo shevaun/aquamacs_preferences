@@ -8,6 +8,7 @@
  '(aquamacs-tool-bar-user-customization nil t)
  '(auto-fill-function nil t)
  '(dabbrev-abbrev-char-regexp "\\sw\\|\\s_")
+ '(dabbrev-abbrev-skip-leading-regexp ":")
  '(dabbrev-backward-only nil)
  '(dabbrev-case-fold-search nil)
  '(default-frame-alist
