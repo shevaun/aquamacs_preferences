@@ -22,6 +22,7 @@
 
 ;; fixes buggy ruby indentation in aquamacs 3.0a http://stackoverflow.com/questions/19900180/emacs-24-ruby-mode-indentation-behavior-when-using-iterator-such-as-each
 (setq ruby-use-smie nil)
+(setq js-indent-level 2)
 
 ;; better buffer switching
 (require 'flx-ido)
@@ -42,7 +43,8 @@
 (add-to-list 'load-path "~/src/github/magit")
 (require 'magit)
 
-(dolist (elm '("yasnippet" "full-ack" "slim-mode"))
+;;  "full-ack"
+(dolist (elm '("yasnippet" "slim-mode"))
  (add-to-list 'load-path (concat "~/.emacs.d/vendor/" elm)))
 
 (require 'slim-mode)
@@ -51,10 +53,17 @@
 (require 'haml-mode)
 (require 'sass-mode)
 
-(autoload 'ack-same "full-ack" nil t)
-(autoload 'ack "full-ack" nil t)
-(autoload 'ack-find-same-file "full-ack" nil t)
-(autoload 'ack-find-file "full-ack" nil t)
+(require 'ack-and-a-half)
+;; Create shorter aliases
+(defalias 'ack 'ack-and-a-half)
+(defalias 'ack-same 'ack-and-a-half-same)
+(defalias 'ack-find-file 'ack-and-a-half-find-file)
+(defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
+
+;; (autoload 'ack-same "full-ack" nil t)
+;; (autoload 'ack "full-ack" nil t)
+;; (autoload 'ack-find-same-file "full-ack" nil t)
+;; (autoload 'ack-find-file "full-ack" nil t)
 
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
@@ -84,6 +93,10 @@
 (add-to-list 'auto-mode-alist '("Guardfile" . ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
+
+(add-hook 'ruby-mode-hook
+          '(lambda ()
+            (global-linum-mode 1)))
 
 ;; General settings
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
@@ -155,3 +168,7 @@
   (open-line count)
   (indent-according-to-mode)
   )
+
+
+(fset 'convert_hash_to_19
+   (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([4 19 61 62 return backspace backspace backspace 58 19 58 return left] 0 "%d")) arg)))
