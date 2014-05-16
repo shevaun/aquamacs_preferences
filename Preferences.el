@@ -14,9 +14,9 @@
 	     '("elpa" . "http://tromey.com/elpa/"))
 (package-initialize)
 
-(load-file "~/.emacs.d/rvm.el")
-(require 'rvm)
-(rvm-use-default) ;; use rvm's default ruby for the current Emacs session
+;;(load-file "~/.emacs.d/rvm.el")
+;;(require 'rvm)
+;;(rvm-use-default) ;; use rvm's default ruby for the current Emacs session
 
 (setq vc-handled-backends '(git))
 
@@ -34,16 +34,15 @@
 ;; disable ido faces to see flx highlights.
 (setq ido-use-faces nil)
 
-;; Colour Scheme
-(require 'color-theme)
-(color-theme-initialize) ;; required for Aquamacs
-(load-file "~/.emacs.d/color-themes/railscasts.el")
-(color-theme-railscasts)
+;; ;; Colour Scheme
+;; (require 'color-theme)
+;; (color-theme-initialize) ;; required for Aquamacs
+;; (load-file "~/.emacs.d/color-themes/railscasts.el")
+;; (color-theme-railscasts)
 
 (add-to-list 'load-path "~/src/github/magit")
 (require 'magit)
 
-;;  "full-ack"
 (dolist (elm '("yasnippet" "slim-mode"))
  (add-to-list 'load-path (concat "~/.emacs.d/vendor/" elm)))
 
@@ -59,11 +58,6 @@
 (defalias 'ack-same 'ack-and-a-half-same)
 (defalias 'ack-find-file 'ack-and-a-half-find-file)
 (defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
-
-;; (autoload 'ack-same "full-ack" nil t)
-;; (autoload 'ack "full-ack" nil t)
-;; (autoload 'ack-find-same-file "full-ack" nil t)
-;; (autoload 'ack-find-file "full-ack" nil t)
 
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
