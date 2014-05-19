@@ -52,6 +52,7 @@
 (require 'haml-mode)
 (require 'sass-mode)
 
+(setq exec-path (append exec-path '("/opt/boxen/homebrew/bin/"))) ;; for ack etc
 (require 'ack-and-a-half)
 ;; Create shorter aliases
 (defalias 'ack 'ack-and-a-half)
