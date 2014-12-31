@@ -26,13 +26,12 @@
 
 ;; better buffer switching
 (require 'flx-ido)
-(require 'tramp)
 (ido-mode 1)
 (ido-everywhere 1)
 (setq ido-enable-flex-matching t)
 (flx-ido-mode 1)
-;; disable ido faces to see flx highlights.
 (setq ido-use-faces nil)
+(projectile-global-mode)
 
 ;; ;; Colour Scheme
 ;; (require 'color-theme)
@@ -93,6 +92,8 @@
           '(lambda ()
             (global-linum-mode 1)))
 
+(setq ruby-insert-encoding-magic-comment nil)
+
 ;; General settings
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
@@ -145,7 +146,7 @@
 (global-set-key [?\M-+] 'text-scale-mode)
 (global-set-key [?\C-=] 'text-scale-increase)
 (global-set-key (kbd "C-x C-e") 'eval-buffer)
-
+(global-set-key (kbd "C-'") 'mark-line-or-next)
 
 ;; functions
 
@@ -153,7 +154,7 @@
   "switch to other-buffer"
   (interactive "")
  (switch-to-buffer (other-buffer))
-  )
+ )
 
 (defun open-line-above (count)
   "open-line from any point along line"
@@ -164,6 +165,22 @@
   (indent-according-to-mode)
   )
 
+(defun mark-line-or-next ()
+  "Marks the current line or extends the mark if there is no current selection"
+  (interactive)
+  (if mark-active
+      (forward-line)
+    (progn
+      (beginning-of-line)
+      (push-mark (point))
+      (end-of-line)
+      (forward-char)
+      (activate-mark)))
+  )
+
+
 
 (fset 'convert_hash_to_19
    (lambda (&optional arg) "Keyboard macro." (interactive "p") (kmacro-exec-ring-item (quote ([4 19 61 62 return backspace backspace backspace 58 19 58 return left] 0 "%d")) arg)))
+
+(set-face-attribute 'region nil :background "#000" :foreground "#ff00ff")

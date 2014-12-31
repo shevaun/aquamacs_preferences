@@ -46,11 +46,12 @@
      (empty-line . empty-line)
      (unknown . question-mark))) t)
  '(global-linum-mode t)
+ '(indent-tabs-mode nil)
  '(ns-right-command-modifier (quote meta))
  '(ns-tool-bar-display-mode (quote both) t)
  '(ns-tool-bar-size-mode (quote regular) t)
  '(safe-local-variable-values (quote ((encoding . utf-8) (lexical-binding . t))))
- '(text-mode-hook (quote (smart-spacing-mode)))
+ '(text-mode-hook nil)
  '(visual-line-mode nil t)
  '(word-wrap t))
 (custom-set-faces
@@ -60,4 +61,4 @@
  ;; If there is more than one, they won't work right.
  '(markdown-mode-default ((t (:inherit text-mode-default :height 130 :family "Monaco"))) t)
  '(rhtml-mode-default ((t (:inherit html-mode-default :height 130 :family "Monaco"))) t)
- '(ruby-mode-default ((t (:inherit prog-mode-default :height 130 :family "Monaco"))) t))
+ '(ruby-mode-default ((t (:inherit prog-mode-default :background "#000000" :height 240 :family "Monaco"))) t))
