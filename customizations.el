@@ -4,13 +4,14 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(aquamacs-additional-fontsets nil t)
- '(aquamacs-customization-version-id 305 t)
+ '(aquamacs-customization-version-id 306 t)
  '(aquamacs-tool-bar-user-customization nil t)
  '(auto-fill-function nil t)
  '(dabbrev-abbrev-char-regexp "\\sw\\|\\s_")
  '(dabbrev-abbrev-skip-leading-regexp ":")
  '(dabbrev-backward-only nil)
  '(dabbrev-case-fold-search nil)
+ '(debug-on-error t)
  '(default-frame-alist
     (quote
      ((cursor-type . box)
@@ -61,4 +62,4 @@
  ;; If there is more than one, they won't work right.
  '(markdown-mode-default ((t (:inherit text-mode-default :height 130 :family "Monaco"))) t)
  '(rhtml-mode-default ((t (:inherit html-mode-default :height 130 :family "Monaco"))) t)
- '(ruby-mode-default ((t (:inherit prog-mode-default :background "#000000" :height 240 :family "Monaco"))) t))
+ '(ruby-mode-default ((t (:inherit prog-mode-default :background "#000000" :height 140 :family "Monaco"))) t))
