@@ -76,6 +76,9 @@
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
+(add-to-list 'load-path "~/Library/Application\ Support/Aquamacs\ Emacs/emacs-elixir")
+(require 'elixir-mode)
+
 ;; ---- ruby -----
 
 (require 'ruby-mode)
@@ -160,6 +163,20 @@
 (global-set-key (kbd "C-'") 'mark-line-or-next)
 
 ;; functions
+
+(defun senny-ruby-open-spec-other-buffer ()
+  (interactive)
+  (when (featurep 'rspec-mode)
+    (let ((source-buffer (current-buffer))
+          (other-buffer (progn
+                          (rspec-toggle-spec-and-target)
+                          (current-buffer))))
+      (switch-to-buffer source-buffer)
+      (pop-to-buffer other-buffer))))
+
+(eval-after-load 'ruby-mode
+  '(progn
+     (define-key ruby-mode-map (kbd "^C s") 'senny-ruby-open-spec-other-buffer)))
 
 (defun toggle-buffer ()
   "switch to other-buffer"
