@@ -60,6 +60,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(feature-mode-default ((t (:inherit autoface-default :height 140 :family "PT Mono"))) t)
  '(markdown-mode-default ((t (:inherit text-mode-default :height 130 :family "Monaco"))) t)
  '(rhtml-mode-default ((t (:inherit html-mode-default :height 130 :family "Monaco"))) t)
- '(ruby-mode-default ((t (:inherit prog-mode-default :background "#000000" :height 140 :family "Monaco"))) t))
+ '(ruby-mode-default ((t (:inherit prog-mode-default :background "#000000" :height 140 :family "PT Mono"))) t))
