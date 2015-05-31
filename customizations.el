@@ -63,4 +63,4 @@
  '(feature-mode-default ((t (:inherit autoface-default :height 140 :family "PT Mono"))) t)
  '(markdown-mode-default ((t (:inherit text-mode-default :height 130 :family "Monaco"))) t)
  '(rhtml-mode-default ((t (:inherit html-mode-default :height 130 :family "Monaco"))) t)
- '(ruby-mode-default ((t (:inherit prog-mode-default :background "#000000" :height 140 :family "PT Mono"))) t))
+ '(ruby-mode-default ((t (:inherit prog-mode-default :background "#000000" :height 140 :foundry "SimSun" :family "Monaco"))) t))
