@@ -11,7 +11,7 @@
 ;; The original ELPA archive still has some useful
 ;; stuff.
 (add-to-list 'package-archives
-	     '("elpa" . "http://tromey.com/elpa/"))
+             '("elpa" . "http://tromey.com/elpa/"))
 (package-initialize)
 
 ;;(load-file "~/.emacs.d/rvm.el")
@@ -49,9 +49,6 @@
 ;; (color-theme-initialize) ;; required for Aquamacs
 ;; (load-file "~/.emacs.d/color-themes/railscasts.el")
 ;; (color-theme-railscasts)
-
-(add-to-list 'load-path "~/src/github/magit")
-(require 'magit)
 
 (dolist (elm '("yasnippet" "slim-mode"))
  (add-to-list 'load-path (concat "~/.emacs.d/vendor/" elm)))
