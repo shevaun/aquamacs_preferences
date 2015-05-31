@@ -3,4 +3,8 @@ Recent Files.el
 frame-positions.el
 minibuffer-history.el
 places.el
-Packages
+Packages/.nosearch
+Packages/ido.last
+Packages/SessionDesktop.el
+Packages/tramp
+Packages/elpa/archives
