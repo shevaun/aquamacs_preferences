@@ -5,18 +5,18 @@
 ;; Use this file in place of ~/.emacs (which is loaded as well.)
 
 (require 'package)
-;; Marmalade
-(add-to-list 'package-archives
-             '("marmalade" . "http://marmalade-repo.org/packages/"))
-;; The original ELPA archive still has some useful
-;; stuff.
-(add-to-list 'package-archives
-             '("elpa" . "http://tromey.com/elpa/"))
+(add-to-list
+ 'package-archives
+ '("melpa" . "http://melpa.org/packages/")
+ t)
+;; ;; Marmalade
+;; (add-to-list 'package-archives
+;;              '("marmalade" . "http://marmalade-repo.org/packages/"))
+;; ;; The original ELPA archive still has some useful
+;; ;; stuff.
+;; (add-to-list 'package-archives
+;;              '("elpa" . "http://tromey.com/elpa/"))
 (package-initialize)
-
-;;(load-file "~/.emacs.d/rvm.el")
-;;(require 'rvm)
-;;(rvm-use-default) ;; use rvm's default ruby for the current Emacs session
 
 (setq vc-handled-backends '(git))
 
@@ -32,7 +32,7 @@
             nil ))
 
 ;; fixes buggy ruby indentation in aquamacs 3.0a http://stackoverflow.com/questions/19900180/emacs-24-ruby-mode-indentation-behavior-when-using-iterator-such-as-each
-(setq ruby-use-smie nil)
+;;(setq ruby-use-smie nil)
 (setq js-indent-level 2)
 
 ;; better buffer switching
@@ -42,7 +42,13 @@
 (setq ido-enable-flex-matching t)
 (flx-ido-mode 1)
 (setq ido-use-faces nil)
-(projectile-global-mode)
+;;(projectile-global-mode)
+
+;; Setting rbenv path
+;; (setenv "PATH" (concat (getenv "HOME") "/.rbenv/shims:" (getenv "HOME") "/.rbenv/bin:" (getenv "PATH")))
+;; (setq exec-path (cons (concat (getenv "HOME") "/.rbenv/shims") (cons (concat (getenv "HOME") "/.rbenv/bin") exec-path)))
+(require 'rbenv)
+(global-rbenv-mode)
 
 ;; ;; Colour Scheme
 ;; (require 'color-theme)
@@ -50,22 +56,16 @@
 ;; (load-file "~/.emacs.d/color-themes/railscasts.el")
 ;; (color-theme-railscasts)
 
-(dolist (elm '("yasnippet" "slim-mode"))
- (add-to-list 'load-path (concat "~/.emacs.d/vendor/" elm)))
+;; (dolist (elm '("yasnippet" "slim-mode"))
+;;  (add-to-list 'load-path (concat "~/.emacs.d/vendor/" elm)))
 
-(require 'slim-mode)
+;; (require 'slim-mode)
 (require 'coffee-mode)
-(require 'yaml-mode)
-(require 'haml-mode)
+;; (require 'yaml-mode)
+;; (require 'haml-mode)
 (require 'sass-mode)
 
-(setq exec-path (append exec-path '("/opt/boxen/homebrew/bin/"))) ;; for ack etc
-(require 'ack-and-a-half)
-;; Create shorter aliases
-(defalias 'ack 'ack-and-a-half)
-(defalias 'ack-same 'ack-and-a-half-same)
-(defalias 'ack-find-file 'ack-and-a-half-find-file)
-(defalias 'ack-find-file-same 'ack-and-a-half-find-file-same)
+(require 'snippet)
 
 (autoload 'markdown-mode "markdown-mode"
   "Major mode for editing Markdown files" t)
@@ -73,15 +73,17 @@
 (add-to-list 'auto-mode-alist '("\\.markdown\\'" . markdown-mode))
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-(add-to-list 'load-path "~/Library/Application\ Support/Aquamacs\ Emacs/emacs-elixir")
-(require 'elixir-mode)
+;; --- searching ---
+(require 'ag) ;; install from melpa
+(setq ag-highlight-search t)
+(setq ag-reuse-buffers 't)
 
 ;; ---- ruby -----
 
 (require 'ruby-mode)
 
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/rails-minor-mode"))
-(require 'rails)
+;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/rails-minor-mode"))
+;; (require 'rails)
 
 (add-to-list 'load-path (expand-file-name "~/Library/Application\ Support/Aquamacs\ Emacs/rhtml-minor-mode"))
 (require 'rhtml-mode)
@@ -105,6 +107,15 @@
 
 (setq ruby-insert-encoding-magic-comment nil)
 
+(require 'pry)
+;; optional suggestions
+(global-set-key [S-f11] 'pry-intercept)
+(global-set-key [f11] 'pry-intercept-rerun)
+
+;; -- modes --
+(require 'feature-mode) ;; install from melpa
+(add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
+
 ;; General settings
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 
@@ -126,26 +137,26 @@
 (global-set-key [S-f6] 'hs-show-all)
 (global-set-key [?\s-.] 'myswitch-to-scratch)
 (global-set-key [?\C-o] 'open-line-above)
-(global-set-key [f5] 'ack)
-(global-set-key [S-f5] 'project-find)
+(global-set-key [f5] 'ag-project)
+(global-set-key [S-f5] 'ag-project-dired)
 (global-set-key [f10] 'next-match)
 (global-set-key [C-f10] 'compile)
-(global-set-key [S-f9] 'ruby-test:find-last)
-(global-set-key [C-f9] 'ruby-test:run-one)
+(global-set-key [f9] 'rspec-verify) ;; run current test file
+(global-set-key [S-f9] 'rspec-verify-single) ;; run current spec
+(global-set-key [C-f9] 'rspec-rerun) ;; rerun last test
 (global-set-key [C-S-f9] 'ruby-test:run)
-(global-set-key [f9] 'ruby-test:rerun)
 (global-set-key [S-f10] 'ruby-test:toggle)
 (global-set-key [M-f9] 'ruby-test:previous)
 (global-set-key [s-M-f9] 'ruby-test:delete-current)
 (global-set-key [s-S-f9] 'ruby-test:list-marks)
 (global-set-key [S-M-f9] 'ruby-test:next)
-(global-set-key [C-f11] 'work-mark:add)
-(global-set-key [S-f11] 'work-mark:current)
-(global-set-key [M-f11] 'work-mark:previous)
-(global-set-key [s-M-f11] 'work-mark:delete-current)
-(global-set-key [s-S-f11] 'work-mark:list-marks)
-(global-set-key [S-M-f11] 'work-mark:next)
-(global-set-key [f11] 'work-mark:toggle)
+;; (global-set-key [C-f11] 'work-mark:add)
+;; (global-set-key [S-f11] 'work-mark:current)
+;; (global-set-key [M-f11] 'work-mark:previous)
+;; (global-set-key [s-M-f11] 'work-mark:delete-current)
+;; (global-set-key [s-S-f11] 'work-mark:list-marks)
+;; (global-set-key [S-M-f11] 'work-mark:next)
+;; (global-set-key [f11] 'work-mark:toggle)
 (global-set-key [?\C-'] 'rails-core:goto-backtrace)
 (global-set-key [f7] 'ediff-revision)
 (global-set-key [f8] 'ediff-buffers)

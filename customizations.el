@@ -4,14 +4,13 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(aquamacs-additional-fontsets nil t)
- '(aquamacs-customization-version-id 306 t)
+ '(aquamacs-customization-version-id 307 t)
  '(aquamacs-tool-bar-user-customization nil t)
  '(auto-fill-function nil t)
  '(dabbrev-abbrev-char-regexp "\\sw\\|\\s_")
  '(dabbrev-abbrev-skip-leading-regexp ":")
  '(dabbrev-backward-only nil)
  '(dabbrev-case-fold-search nil)
- '(debug-on-error t)
  '(default-frame-alist
     (quote
      ((cursor-type . box)
@@ -51,8 +50,12 @@
  '(ns-right-command-modifier (quote meta))
  '(ns-tool-bar-display-mode (quote both) t)
  '(ns-tool-bar-size-mode (quote regular) t)
+ '(rspec-spec-command "test")
+ '(rspec-use-bundler-when-possible nil)
+ '(rspec-use-spring-when-possible nil)
  '(safe-local-variable-values (quote ((encoding . utf-8) (lexical-binding . t))))
  '(text-mode-hook nil)
+ '(transient-mark-mode (quote (only . t)))
  '(visual-line-mode nil t)
  '(word-wrap t))
 (custom-set-faces
@@ -63,4 +66,4 @@
  '(feature-mode-default ((t (:inherit autoface-default :height 140 :family "PT Mono"))) t)
  '(markdown-mode-default ((t (:inherit text-mode-default :height 130 :family "Monaco"))) t)
  '(rhtml-mode-default ((t (:inherit html-mode-default :height 130 :family "Monaco"))) t)
- '(ruby-mode-default ((t (:inherit prog-mode-default :background "#000000" :height 140 :foundry "SimSun" :family "Monaco"))) t))
+ '(ruby-mode-default ((t (:inherit prog-mode-default :background "#000000" :height 130 :foundry "SimSun" :family "Monaco"))) t))
