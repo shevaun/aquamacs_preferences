@@ -107,11 +107,6 @@
 
 (setq ruby-insert-encoding-magic-comment nil)
 
-(require 'pry)
-;; optional suggestions
-(global-set-key [S-f11] 'pry-intercept)
-(global-set-key [f11] 'pry-intercept-rerun)
-
 ;; -- modes --
 (require 'feature-mode) ;; install from melpa
 (add-to-list 'auto-mode-alist '("\.feature$" . feature-mode))
