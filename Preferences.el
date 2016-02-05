@@ -134,6 +134,7 @@
 (global-set-key [?\C-o] 'open-line-above)
 (global-set-key [f5] 'ag-project)
 (global-set-key [S-f5] 'ag-project-dired)
+(global-set-key [C-f5] 'ag-regexp)
 (global-set-key [f10] 'next-match)
 (global-set-key [C-f10] 'compile)
 (global-set-key [f9] 'rspec-verify) ;; run current test file
