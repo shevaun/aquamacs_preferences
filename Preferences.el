@@ -104,6 +104,7 @@
 (add-hook 'ruby-mode-hook
           '(lambda ()
             (global-linum-mode 1)))
+(add-hook 'after-init-hook 'inf-ruby-switch-setup)
 
 (setq ruby-insert-encoding-magic-comment nil)
 
