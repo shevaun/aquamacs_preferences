@@ -9,13 +9,6 @@
  'package-archives
  '("melpa" . "http://melpa.org/packages/")
  t)
-;; ;; Marmalade
-;; (add-to-list 'package-archives
-;;              '("marmalade" . "http://marmalade-repo.org/packages/"))
-;; ;; The original ELPA archive still has some useful
-;; ;; stuff.
-;; (add-to-list 'package-archives
-;;              '("elpa" . "http://tromey.com/elpa/"))
 (package-initialize)
 
 (defvar custom-packages
@@ -73,21 +66,8 @@
 (require 'rbenv)
 (global-rbenv-mode)
 
-;; ;; Colour Scheme
-;; (require 'color-theme)
-;; (color-theme-initialize) ;; required for Aquamacs
-;; (load-file "~/.emacs.d/color-themes/railscasts.el")
-;; (color-theme-railscasts)
-
-;; (dolist (elm '("yasnippet" "slim-mode"))
-;;  (add-to-list 'load-path (concat "~/.emacs.d/vendor/" elm)))
-
-;; (require 'slim-mode)
 (require 'coffee-mode)
-;; (require 'yaml-mode)
-;; (require 'haml-mode)
 (require 'sass-mode)
-
 (require 'snippet)
 
 (autoload 'markdown-mode "markdown-mode"
