@@ -4,7 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(aquamacs-additional-fontsets nil t)
- '(aquamacs-customization-version-id 307 t)
+ '(aquamacs-customization-version-id 308 t)
  '(aquamacs-tool-bar-user-customization nil t)
  '(auto-fill-function nil t)
  '(dabbrev-abbrev-char-regexp "\\sw\\|\\s_")
@@ -53,6 +53,9 @@
  '(ns-right-command-modifier (quote meta))
  '(ns-tool-bar-display-mode (quote both) t)
  '(ns-tool-bar-size-mode (quote regular) t)
+ '(package-selected-packages
+   (quote
+    (yaml-mode ruby-tools rspec-mode rbenv projectile ocodo-svg-modelines feature-mode exec-path-from-shell ag)))
  '(rspec-spec-command "./bin/rspec")
  '(rspec-use-bundler-when-possible nil)
  '(rspec-use-rake-when-possible nil)

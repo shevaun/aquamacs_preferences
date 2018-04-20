@@ -18,6 +18,28 @@
 ;;              '("elpa" . "http://tromey.com/elpa/"))
 (package-initialize)
 
+(defvar custom-packages
+  '(ag exec-path-from-shell feature-mode rbenv rspec-mode ruby-tools yaml-mode)
+  "A list of packages to ensure are installed at launch.")
+
+(defun custom-packages-installed-p ()
+  (loop for p in custom-packages
+        when (not (package-installed-p p)) do (return nil)
+        finally (return t)))
+
+(unless (custom-packages-installed-p)
+  ;; check for new packages (package versions)
+  (message "%s" "Aquamacs is now refreshing its package database...")
+  (package-refresh-contents)
+  (message "%s" " done.")
+  ;; install the missing packages
+  (dolist (p custom-packages)
+    (when (not (package-installed-p p))
+      (package-install p))))
+
+(provide 'custom-packages)
+;;; custom-packages.el ends here
+
 ;; package exec-path-from-shell
 (when (memq window-system '(mac ns))
   (exec-path-from-shell-initialize))
@@ -108,7 +130,6 @@
 (add-hook 'ruby-mode-hook
           '(lambda ()
             (global-linum-mode 1)))
-(add-hook 'after-init-hook 'inf-ruby-switch-setup)
 
 (setq ruby-insert-encoding-magic-comment nil)
 
