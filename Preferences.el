@@ -62,9 +62,8 @@
 (flx-ido-mode 1)
 (setq ido-use-faces nil)
 
-;; Setting rbenv path
-(require 'rbenv)
-(global-rbenv-mode)
+;; Set default ruby version
+(rbenv-use-global)
 
 (require 'coffee-mode)
 (require 'sass-mode)
