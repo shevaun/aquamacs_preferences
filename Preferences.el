@@ -19,7 +19,7 @@
 (package-initialize)
 
 (defvar custom-packages
-  '(ag exec-path-from-shell feature-mode rbenv rspec-mode ruby-tools yaml-mode)
+  '(ag exec-path-from-shell feature-mode rbenv rspec-mode ruby-tools yaml-mode flx-ido)
   "A list of packages to ensure are installed at launch.")
 
 (defun custom-packages-installed-p ()
@@ -46,8 +46,6 @@
 
 (setq vc-handled-backends '(git))
 
-;;(add-to-list 'exec-path "/opt/boxen/homebrew/bin/ag")
-
 ;; no tabs by default. modes that really need tabs should enable
 ;; indent-tabs-mode explicitly. makefile-mode already does that, for
 ;; example.
@@ -70,7 +68,6 @@
 (setq ido-enable-flex-matching t)
 (flx-ido-mode 1)
 (setq ido-use-faces nil)
-;;(projectile-global-mode)
 
 ;; Setting rbenv path
 (require 'rbenv)
