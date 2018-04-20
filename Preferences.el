@@ -18,7 +18,13 @@
 ;;              '("elpa" . "http://tromey.com/elpa/"))
 (package-initialize)
 
+;; package exec-path-from-shell
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+
 (setq vc-handled-backends '(git))
+
+;;(add-to-list 'exec-path "/opt/boxen/homebrew/bin/ag")
 
 ;; no tabs by default. modes that really need tabs should enable
 ;; indent-tabs-mode explicitly. makefile-mode already does that, for
@@ -45,8 +51,6 @@
 ;;(projectile-global-mode)
 
 ;; Setting rbenv path
-;; (setenv "PATH" (concat (getenv "HOME") "/.rbenv/shims:" (getenv "HOME") "/.rbenv/bin:" (getenv "PATH")))
-;; (setq exec-path (cons (concat (getenv "HOME") "/.rbenv/shims") (cons (concat (getenv "HOME") "/.rbenv/bin") exec-path)))
 (require 'rbenv)
 (global-rbenv-mode)
 
@@ -114,6 +118,12 @@
 
 ;; General settings
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
+
+(require 'whitespace)
+(setq whitespace-line-column 120) ;; limit line length
+(setq whitespace-style '(face lines-tail))
+
+(add-hook 'ruby-mode-hook 'whitespace-mode)
 
 (require 'browse-kill-ring)
 (browse-kill-ring-default-keybindings)

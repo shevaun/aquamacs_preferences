@@ -32,6 +32,9 @@
       (mouse-color . "sienna1")
       (cursor-color . "red")
       (foreground-color . "#E6E1DC"))))
+ '(exec-path
+   (quote
+    ("/Users/shevaun/.rbenv/bin" "/Users/shevaun/.rbenv/shims" "/usr/local/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/opt/X11/bin" "/usr/local/MacGPG2/bin" "/Users/shevaun/.rvm/bin" "/usr/bin" "/bin" "/usr/sbin" "/sbin" "/Applications/Aquamacs.app/Contents/MacOS/libexec" "/Applications/Aquamacs.app/Contents/MacOS/bin" "/usr/texbin" "/opt/boxen/homebrew/bin")))
  '(fringe-indicator-alist
    (quote
     ((continuation nil nil)
@@ -50,12 +53,12 @@
  '(ns-right-command-modifier (quote meta))
  '(ns-tool-bar-display-mode (quote both) t)
  '(ns-tool-bar-size-mode (quote regular) t)
- '(rspec-spec-command "test")
+ '(rspec-spec-command "./bin/rspec")
  '(rspec-use-bundler-when-possible nil)
- '(rspec-use-spring-when-possible nil)
+ '(rspec-use-rake-when-possible nil)
+ '(rspec-use-spring-when-possible t)
  '(safe-local-variable-values (quote ((encoding . utf-8) (lexical-binding . t))))
  '(text-mode-hook nil)
- '(transient-mark-mode (quote (only . t)))
  '(visual-line-mode nil t)
  '(word-wrap t))
 (custom-set-faces
@@ -66,4 +69,5 @@
  '(feature-mode-default ((t (:inherit autoface-default :height 140 :family "PT Mono"))) t)
  '(markdown-mode-default ((t (:inherit text-mode-default :height 130 :family "Monaco"))) t)
  '(rhtml-mode-default ((t (:inherit html-mode-default :height 130 :family "Monaco"))) t)
- '(ruby-mode-default ((t (:inherit prog-mode-default :background "#000000" :height 130 :foundry "SimSun" :family "Monaco"))) t))
+ '(ruby-mode-default ((t (:inherit prog-mode-default :background "#000000" :height 130 :foundry "SimSun" :family "Monaco"))) t)
+ '(yaml-mode-default ((t (:inherit text-mode-default :height 130 :family "Monaco"))) t))
