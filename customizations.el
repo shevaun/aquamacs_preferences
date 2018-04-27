@@ -59,7 +59,7 @@
  '(rspec-spec-command "./bin/rspec")
  '(rspec-use-bundler-when-possible nil)
  '(rspec-use-rake-when-possible nil)
- '(rspec-use-spring-when-possible t)
+ '(rspec-use-spring-when-possible nil)
  '(safe-local-variable-values (quote ((encoding . utf-8) (lexical-binding . t))))
  '(text-mode-hook nil)
  '(visual-line-mode nil t)
