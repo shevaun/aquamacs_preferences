@@ -5,11 +5,13 @@
 ;; Use this file in place of ~/.emacs (which is loaded as well.)
 
 (require 'package)
-(add-to-list
- 'package-archives
- '("melpa" . "https://melpa.org/packages/")
- t)
+(add-to-list 'package-archives (cons "melpa-stable" "http://stable.melpa.org/packages/") t)
 (package-initialize)
+
+;; to get aquamacs connecting to melpa package repo
+(with-eval-after-load 'tls
+  (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+  (push "/private/etc/ssl/cert.pem" gnutls-trustfiles))
 
 (defvar custom-packages
   '(ag exec-path-from-shell feature-mode rbenv rspec-mode ruby-tools yaml-mode flx-ido)
@@ -79,6 +81,10 @@
 (require 'ag) ;; install from melpa
 (setq ag-highlight-search t)
 (setq ag-reuse-buffers 't)
+
+;; ---- go ----
+(require 'go-mode)
+(add-hook 'go-mode-hook 'rats-mode)
 
 ;; ---- ruby -----
 
