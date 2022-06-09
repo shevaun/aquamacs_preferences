@@ -93,9 +93,9 @@
 ;; (add-to-list 'load-path (expand-file-name "~/.emacs.d/rails-minor-mode"))
 ;; (require 'rails)
 
-(add-to-list 'load-path (expand-file-name "~/Library/Application\ Support/Aquamacs\ Emacs/rhtml-minor-mode"))
-(require 'rhtml-mode)
-(add-hook 'rhtml-mode (lambda () (rails-minor-mode 1)))
+;;(add-to-list 'load-path (expand-file-name "~/Library/Application\ Support/Aquamacs\ Emacs/rhtml-minor-mode"))
+;;(require 'rhtml-mode)
+;;(add-hook 'rhtml-mode (lambda () (rails-minor-mode 1)))
 
 (add-to-list 'auto-mode-alist '("\\.rb$" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.yml$" . yaml-mode))
@@ -108,6 +108,13 @@
 (add-to-list 'auto-mode-alist '("Guardfile" . ruby-mode))
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
+
+(require 'mmm-auto)
+(setq mmm-global-mode 'auto)
+(mmm-add-mode-ext-class 'html-erb-mode "\\.html\\.erb\\'" 'erb)
+(mmm-add-mode-ext-class 'html-erb-mode "\\.jst\\.ejs\\'" 'ejs)
+(mmm-add-mode-ext-class 'html-erb-mode nil 'html-js)
+(mmm-add-mode-ext-class 'html-erb-mode nil 'html-css)
 
 (add-hook 'ruby-mode-hook
           '(lambda ()

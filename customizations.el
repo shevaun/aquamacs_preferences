@@ -6,7 +6,7 @@
  '(ag-arguments (quote ("--smart-case" "--stats")))
  '(ag-ignore-list (quote ("*.css" "*.sass")))
  '(aquamacs-additional-fontsets nil t)
- '(aquamacs-customization-version-id 308 t)
+ '(aquamacs-customization-version-id 360 t)
  '(aquamacs-tool-bar-user-customization nil t)
  '(auto-fill-function nil t)
  '(dabbrev-abbrev-char-regexp "\\sw\\|\\s_")
@@ -57,7 +57,7 @@
  '(ns-tool-bar-size-mode (quote regular) t)
  '(package-selected-packages
    (quote
-    (rats go-mode flx-ido yaml-mode ruby-tools rspec-mode rbenv projectile ocodo-svg-modelines feature-mode exec-path-from-shell ag)))
+    (mmm-mode web-mode rats go-mode flx-ido yaml-mode ruby-tools rspec-mode rbenv projectile ocodo-svg-modelines feature-mode exec-path-from-shell ag)))
  '(rspec-spec-command "./bin/rspec")
  '(rspec-use-bundler-when-possible nil)
  '(rspec-use-rake-when-possible nil)
@@ -71,8 +71,24 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:inherit nil :stipple nil :background "#232323" :foreground "#E6E1DC" :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 130 :width normal :foundry "nil" :family "Monaco"))))
  '(feature-mode-default ((t (:inherit autoface-default :height 140 :family "PT Mono"))) t)
+ '(html-erb-mode-default ((t (:inherit html-mode-default :height 130 :family "Monaco"))) t)
  '(markdown-mode-default ((t (:inherit text-mode-default :height 130 :family "Monaco"))) t)
  '(rhtml-mode-default ((t (:inherit html-mode-default :height 130 :family "Monaco"))) t)
  '(ruby-mode-default ((t (:inherit prog-mode-default :background "#000000" :height 130 :foundry "SimSun" :family "Monaco"))) t)
  '(yaml-mode-default ((t (:inherit text-mode-default :height 130 :family "Monaco"))) t))
+
+;; Check custom-file compatibility
+(when (and (boundp 'aquamacs-version-id)
+           (< (floor (/ aquamacs-version-id 10))
+           (floor (/ aquamacs-customization-version-id 10))))
+  (defadvice frame-notice-user-settings (before show-version-warning activate)
+    (defvar aquamacs-backup-custom-file nil "Backup of `custom-file', if any.")
+    (setq aquamacs-backup-custom-file "~/Library/Preferences/Aquamacs Emacs/customizations.3.1.el")
+    (let ((msg "Aquamacs options were saved by a more recent program version.
+Errors may occur.  Save Options to overwrite the customization file. The original, older customization file was backed up to ~/Library/Preferences/Aquamacs Emacs/customizations.3.1.el."))
+      (if window-system
+          (x-popup-dialog t (list msg '("OK" . nil) 'no-cancel) "Warning")
+        (message msg)))))
+;; End compatibility check
