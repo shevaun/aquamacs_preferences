@@ -65,7 +65,8 @@
 (setq ido-use-faces nil)
 
 ;; Set default ruby version
-(rbenv-use-global)
+(setq rbenv-installation-dir "/opt/homebrew/bin/rbenv")
+(rbenv-use-corresponding)
 
 (require 'coffee-mode)
 (require 'sass-mode)
