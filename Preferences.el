@@ -5,7 +5,7 @@
 ;; Use this file in place of ~/.emacs (which is loaded as well.)
 
 (require 'package)
-(add-to-list 'package-archives (cons "melpa-stable" "http://stable.melpa.org/packages/") t)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 
 ;; to get aquamacs connecting to melpa package repo
@@ -84,8 +84,8 @@
 (setq ag-reuse-buffers 't)
 
 ;; ---- go ----
-(require 'go-mode)
-(add-hook 'go-mode-hook 'rats-mode)
+;;(require 'go-mode)
+;;(add-hook 'go-mode-hook 'rats-mode)
 
 ;; ---- ruby -----
 
@@ -112,10 +112,13 @@
 
 (require 'mmm-auto)
 (setq mmm-global-mode 'auto)
-(mmm-add-mode-ext-class 'html-erb-mode "\\.html\\.erb\\'" 'erb)
+(mmm-add-mode-ext-class 'html-erb-mode "\\.html.erb\\'" 'erb)
 (mmm-add-mode-ext-class 'html-erb-mode "\\.jst\\.ejs\\'" 'ejs)
 (mmm-add-mode-ext-class 'html-erb-mode nil 'html-js)
 (mmm-add-mode-ext-class 'html-erb-mode nil 'html-css)
+
+(add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . html-erb-mode))
+(add-to-list 'auto-mode-alist '("\\.jst\\.ejs\\'"  . html-erb-mode))
 
 (add-hook 'ruby-mode-hook
           '(lambda ()
