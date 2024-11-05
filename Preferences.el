@@ -110,15 +110,40 @@
 (add-to-list 'interpreter-mode-alist '("ruby" . ruby-mode))
 (add-to-list 'auto-mode-alist '("\\.js\\'" . js-mode))
 
-(require 'mmm-auto)
-(setq mmm-global-mode 'auto)
-(mmm-add-mode-ext-class 'html-erb-mode "\\.html.erb\\'" 'erb)
-(mmm-add-mode-ext-class 'html-erb-mode "\\.jst\\.ejs\\'" 'ejs)
-(mmm-add-mode-ext-class 'html-erb-mode nil 'html-js)
-(mmm-add-mode-ext-class 'html-erb-mode nil 'html-css)
 
-(add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . html-erb-mode))
-(add-to-list 'auto-mode-alist '("\\.jst\\.ejs\\'"  . html-erb-mode))
+(require 'web-mode)
+
+(setq web-mode-engines-alist
+  '(("erb" . "\\.erb.html\\'"))
+)
+
+(add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+(add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+
+(defun my-web-mode-hook ()
+  "Hooks for Web mode."
+  (setq web-mode-markup-indent-offset 2)
+  (setq web-mode-css-indent-offset 2)
+  (setq web-mode-code-indent-offset 2)
+  (web-mode-set-engine "erb")
+)
+(add-hook 'web-mode-hook  'my-web-mode-hook)
+
+
+;; (require 'mmm-auto)
+;; (setq mmm-global-mode 'auto)
+;; (mmm-add-mode-ext-class 'html-erb-mode "\\.html.erb\\'" 'erb)
+;; (mmm-add-mode-ext-class 'html-erb-mode "\\.jst\\.ejs\\'" 'ejs)
+;; (mmm-add-mode-ext-class 'html-erb-mode nil 'html-js)
+;; (mmm-add-mode-ext-class 'html-erb-mode nil 'html-css)
+
+;; (add-to-list 'auto-mode-alist '("\\.html\\.erb\\'" . html-erb-mode))
+;; (add-to-list 'auto-mode-alist '("\\.jst\\.ejs\\'"  . html-erb-mode))
 
 (add-hook 'ruby-mode-hook
           '(lambda ()
