@@ -13,8 +13,12 @@
   (setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
   (push "/private/etc/ssl/cert.pem" gnutls-trustfiles))
 
+;; so emacs uses the right version of ruby etc
+(setenv "PATH" (concat (getenv "PATH") ":/home/user/.local/share/mise/shims"))
+(setq exec-path (append exec-path '("/home/user/.local/share/mise/shims")))
+
 (defvar custom-packages
-  '(ag exec-path-from-shell feature-mode rbenv rspec-mode ruby-tools yaml-mode flx-ido)
+  '(ag exec-path-from-shell feature-mode rspec-mode ruby-tools yaml-mode flx-ido)
   "A list of packages to ensure are installed at launch.")
 
 (defun custom-packages-installed-p ()
@@ -63,10 +67,6 @@
 (setq ido-enable-flex-matching t)
 (flx-ido-mode 1)
 (setq ido-use-faces nil)
-
-;; Set default ruby version
-(setq rbenv-installation-dir "/opt/homebrew/bin/rbenv")
-(rbenv-use-corresponding)
 
 (require 'coffee-mode)
 (require 'sass-mode)

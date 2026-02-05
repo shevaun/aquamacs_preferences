@@ -57,7 +57,7 @@
  '(ns-tool-bar-size-mode (quote regular) t)
  '(package-selected-packages
    (quote
-    (mmm-mode web-mode rats go-mode flx-ido yaml-mode ruby-tools rspec-mode rbenv projectile ocodo-svg-modelines feature-mode exec-path-from-shell ag)))
+    (mise mmm-mode web-mode rats go-mode flx-ido yaml-mode ruby-tools rspec-mode rbenv projectile ocodo-svg-modelines feature-mode exec-path-from-shell ag)))
  '(rspec-spec-command "./bin/rspec")
  '(rspec-use-bundler-when-possible nil)
  '(rspec-use-rake-when-possible nil)
